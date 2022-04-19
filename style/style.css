@@ -54,7 +54,7 @@ body {
   font-size: 1.55rem;
   color: var(--white);
   padding: 5px 10px 5px 60px;
-  width: 400px;
+  width: 100%;
   transition: 0.2s;
   font-family: var(--font-family);
   outline: none;
@@ -102,7 +102,7 @@ body {
 
 .main__current {
   display: flex;
-  margin: 20px 0 40px 20px;
+  margin: 20px 0 20px 20px;
 }
 
 .main__side {
@@ -176,6 +176,7 @@ body {
 }
 
 .main__hourly__row {
+  scroll-behavior: smooth;
   display: flex;
   gap: 12px;
   padding: 0 0 20px 0;

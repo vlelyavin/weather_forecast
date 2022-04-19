@@ -8,8 +8,6 @@ const weatherNow = async (city: any) => {
 
   const dataHourly: any = await resultDaily.json();
   const dataDaily: any = await resultHourly.json();
-  console.log(dataDaily);
-  console.log(dataHourly);
 
   const currentDate: Date = new Date();
   const currentDay: number = currentDate.getDate();
@@ -43,7 +41,6 @@ const weatherNow = async (city: any) => {
   const sunset: HTMLElement = document.querySelector(".sunset");
   const humidity: HTMLElement = document.querySelector(".humidity");
   const icon: HTMLElement = document.querySelector(".main__icon");
-  const main: HTMLElement = document.querySelector(".main");
   const body: HTMLElement = document.querySelector("body");
 
   const sunsetDate: string = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
@@ -96,18 +93,18 @@ const weatherNow = async (city: any) => {
 weatherNow("Kyiv");
 
 const form: HTMLFormElement = document.querySelector(".main__aside");
+const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData: FormData = new FormData(form);
   const citySearch: FormDataEntryValue = formData.get("city__name");
   weatherNow(citySearch);
-  let input: HTMLFormElement = document.querySelector(".main__search");
+  const input: HTMLFormElement = document.querySelector(".main__search");
   input.value = "";
 });
 
-const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
-
 scrollRow.addEventListener("wheel", (e) => {
   e.preventDefault();
-  scrollRow.scrollLeft += e.deltaY / 3;
+  scrollRow.scrollLeft += e.deltaY * 1.2;
 });
