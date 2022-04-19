@@ -1,0 +1,294 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  transition: 0.1s;
+  font-size: 10px;
+}
+
+:root {
+  --creme: 242, 222, 221;
+  --black: 0, 0, 0;
+  --bg: rgba(0, 0, 0, 0.5);
+  --medium: 500;
+  --font-family: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  overflow-x: hidden;
+  color: rgb(var(--creme));
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/bg/clear_bg.jpg) no-repeat / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  max-width: 800px;
+  width: 100%;
+  transition: padding 0.2s;
+  background: var(--bg);
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.main__location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__search {
+  position: relative;
+  top: 10px;
+  line-height: 50px;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  background: rgba(var(--black), 0.2);
+  font-size: 1.55rem;
+  color: var(--white);
+  padding: 5px 10px 5px 60px;
+  width: 400px;
+  transition: 0.2s;
+  font-family: var(--font-family);
+  outline: none;
+  border: none;
+}
+
+.main__search:focus {
+  box-shadow: inset 0 0 0 2px rgb(var(--creme));
+}
+
+.main__search::placeholder {
+  color: rgba(var(--creme), 0.8);
+  transition: 0.2s;
+}
+
+.main__search:focus::placeholder {
+  padding: 0 0 0 5px;
+  color: rgba(var(--creme), 0.5);
+}
+
+.main__city {
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.main__date {
+  font-size: 1.875rem;
+  font-weight: var(--medium);
+}
+
+.main__aside__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 8px;
+  left: 42px;
+  z-index: 10;
+  height: 30px;
+  width: 30px;
+  background: url(../images/icons/search.png);
+  outline: none;
+  border: none;
+}
+
+.main__current {
+  display: flex;
+  margin: 20px 0 40px 20px;
+}
+
+.main__side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50%;
+}
+
+.main__aside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: width 0.2s;
+  margin: 0 30px 0 0;
+}
+
+.main__temp {
+  font-size: 6.55rem;
+}
+
+.main__weather__type {
+  margin: -10px 0 0 0;
+  font-size: 1.75rem;
+  text-transform: capitalize;
+  font-weight: var(--medium);
+}
+
+.main__weather__image {
+  width: 120px;
+  height: 120px;
+  margin: 30px 60px 0 0;
+  transition: height 0.2s, width 0.2s;
+}
+
+.right {
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.right::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 3px;
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+  background: var(--white);
+}
+
+.main__right__row {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.main__detail {
+  font-size: 2.25rem;
+  font-weight: var(--medium);
+}
+
+.main__detail__text {
+  font-size: 1.375rem;
+}
+
+.main__detail__element {
+  text-align: center;
+  flex: 0 0 33%;
+}
+
+.main__hourly__row {
+  display: flex;
+  gap: 12px;
+  padding: 0 0 20px 0;
+  overflow-x: auto;
+}
+
+.main__hourly__text {
+  font-size: 1.7rem;
+  font-weight: var(--medium);
+  margin: 0 0 20px 0;
+}
+
+.main__hourly__card {
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 80px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  transition: width 0.2s;
+  padding: 5px 7px;
+}
+
+.main__hourly {
+  font-size: 1.55rem;
+  font-weight: var(--medium);
+}
+
+.main__hourly__icon {
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+}
+
+.main__hourly__icon img {
+  height: 40px;
+  width: 40px;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--creme));
+  border-radius: 8px;
+}
+
+@media (max-width: 1050px) {
+  .main {
+    max-width: 600px;
+  }
+  .main__location {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .main__search {
+    width: 100%;
+    margin: 30px auto 0;
+  }
+  .main__aside {
+    width: 90%;
+  }
+  .main__current {
+    display: block;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .main__side {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .right {
+    margin: 0 auto 20px;
+  }
+  .main__right__row {
+    margin: 20px 0;
+    gap: 15px;
+  }
+  .main__aside__button {
+    top: 22px;
+  }
+  .main__weather__image {
+    height: 150px;
+    width: 150px;
+  }
+  .main__hourly__text {
+    text-align: center;
+  }
+}
