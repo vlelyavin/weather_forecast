@@ -139,11 +139,9 @@ form.addEventListener("submit", function (e) {
     var citySearch = formData.get("city__name");
     weatherNow(citySearch);
     var input = document.querySelector(".main__search");
-    input.value = citySearch;
-    formData["delete"]("city__name");
+    input.value = "";
 });
 scrollRow.addEventListener("wheel", function (e) {
     e.preventDefault();
     scrollRow.scrollLeft += e.deltaY * 1.2;
-    scrollRow.style.scrollBehavior = "smooth";
 });
