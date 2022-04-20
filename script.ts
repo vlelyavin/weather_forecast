@@ -92,7 +92,6 @@ const weatherNow = async (city: any) => {
 
 const findLocation = () => {
   const success = async (position) => {
-    console.log("success");
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
