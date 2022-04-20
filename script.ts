@@ -91,12 +91,12 @@ const weatherNow = async (city: any) => {
 };
 
 const findLocation = () => {
-  const success = async (position) => {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
-    const geoApiResult = await fetch(geoApiUrl);
-    const geoApiResponse = await geoApiResult.json();
+  const success = async (position: any) => {
+    const latitude: number = position.coords.latitude;
+    const longitude: number = position.coords.longitude;
+    const geoApiUrl: string = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+    const geoApiResult: Response = await fetch(geoApiUrl);
+    const geoApiResponse: any = await geoApiResult.json();
     weatherNow(geoApiResponse.locality);
   };
   const error = () => {
