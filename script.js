@@ -130,13 +130,41 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
         }
     });
 }); };
-weatherNow("Kyiv");
+var findLocation = function () {
+    var success = function (position) { return __awaiter(_this, void 0, void 0, function () {
+        var latitude, longitude, geoApiUrl, geoApiResult, geoApiResponse;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("success");
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    geoApiUrl = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=".concat(latitude, "&longitude=").concat(longitude, "&localityLanguage=en");
+                    return [4 /*yield*/, fetch(geoApiUrl)];
+                case 1:
+                    geoApiResult = _a.sent();
+                    return [4 /*yield*/, geoApiResult.json()];
+                case 2:
+                    geoApiResponse = _a.sent();
+                    weatherNow(geoApiResponse.locality);
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    var error = function () {
+        alert("unable to retrieve your position");
+        weatherNow("Kyiv");
+    };
+    navigator.geolocation.getCurrentPosition(success, error);
+};
+findLocation();
 var form = document.querySelector(".main__aside");
 var scrollRow = document.querySelector(".main__hourly__row");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     var formData = new FormData(form);
-    var citySearch = formData.get("city__name");
+    var city = formData.get("city__name");
+    var citySearch = city.toString().trim();
     weatherNow(citySearch);
     var input = document.querySelector(".main__search");
     input.value = "";

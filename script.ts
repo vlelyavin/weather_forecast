@@ -90,7 +90,24 @@ const weatherNow = async (city: any) => {
   cardTempCalc();
 };
 
-weatherNow("Kyiv");
+const findLocation = () => {
+  const success = async (position) => {
+    console.log("success");
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+    const geoApiResult = await fetch(geoApiUrl);
+    const geoApiResponse = await geoApiResult.json();
+    weatherNow(geoApiResponse.locality);
+  };
+  const error = () => {
+    alert("unable to retrieve your position");
+    weatherNow("Kyiv");
+  };
+  navigator.geolocation.getCurrentPosition(success, error);
+};
+
+findLocation();
 
 const form: HTMLFormElement = document.querySelector(".main__aside");
 const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
@@ -98,7 +115,8 @@ const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData: FormData = new FormData(form);
-  const citySearch: FormDataEntryValue = formData.get("city__name");
+  const city: FormDataEntryValue = formData.get("city__name");
+  const citySearch = city.toString().trim();
   weatherNow(citySearch);
   const input: HTMLFormElement = document.querySelector(".main__search");
   input.value = "";
