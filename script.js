@@ -98,7 +98,7 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
                 sunrise.textContent = sunriseDate;
                 sunset.textContent = sunsetDate;
                 humidity.textContent = "".concat(dataDaily.main.humidity, "%");
-                icon.innerHTML = "<img src=\"./images//icons/".concat(dataDaily.weather[0].main.toLowerCase(), ".png\" class=\"main__weather__image\">");
+                icon.innerHTML = "<img src=\"./images/icons/".concat(dataDaily.weather[0].main.toLowerCase(), ".png\" class=\"main__weather__image\">");
                 body.style.background = "url(\"./images/bg/".concat(dataDaily.weather[0].main.toLowerCase(), "_bg.jpg\") no-repeat center center / cover");
                 cardsTime = document.querySelectorAll(".time");
                 cardTimeCalc = function () {
@@ -136,7 +136,6 @@ var findLocation = function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log("success");
                     latitude = position.coords.latitude;
                     longitude = position.coords.longitude;
                     geoApiUrl = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=".concat(latitude, "&longitude=").concat(longitude, "&localityLanguage=en");

@@ -57,7 +57,7 @@ const weatherNow = async (city: any) => {
   sunset.textContent = sunsetDate;
   humidity.textContent = `${dataDaily.main.humidity}%`;
 
-  icon.innerHTML = `<img src="./images//icons/${dataDaily.weather[0].main.toLowerCase()}.png" class="main__weather__image">`;
+  icon.innerHTML = `<img src="./images/icons/${dataDaily.weather[0].main.toLowerCase()}.png" class="main__weather__image">`;
   body.style.background = `url("./images/bg/${dataDaily.weather[0].main.toLowerCase()}_bg.jpg") no-repeat center center / cover`;
 
   const cardsTime: NodeListOf<HTMLElement> = document.querySelectorAll(".time");
