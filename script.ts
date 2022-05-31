@@ -43,8 +43,9 @@ const weatherNow = async (city: any) => {
   const icon: HTMLElement = document.querySelector(".main__icon");
   const body: HTMLElement = document.querySelector("body");
 
-  const sunsetDate: string = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
-  const sunriseDate: string = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5);
+  const sunsetDate: string = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString("en-UK").slice(0, 5);
+  console.log(sunsetDate);
+  const sunriseDate: string = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString("en-UK").slice(0, 5);
 
   date.textContent = `${currentDayFull} ${currentDay} ${currentMonthFull}`;
   location.textContent = `${dataDaily.name}, ${dataHourly.city.country}`;
@@ -58,7 +59,7 @@ const weatherNow = async (city: any) => {
   humidity.textContent = `${dataDaily.main.humidity}%`;
 
   icon.innerHTML = `<img src="./images/icons/${dataDaily.weather[0].main.toLowerCase()}.png" class="main__weather__image">`;
-  body.style.background = `url("./images/bg/${dataDaily.weather[0].main.toLowerCase()}_bg.jpg") no-repeat center center / cover`;
+  body.style.background = `url("./images/bg/${dataDaily.weather[0].main.toLowerCase()}_bg.webp") no-repeat center center / cover`;
 
   const cardsTime: NodeListOf<HTMLElement> = document.querySelectorAll(".time");
   const cardTimeCalc = () => {

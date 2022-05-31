@@ -86,8 +86,9 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
                 humidity = document.querySelector(".humidity");
                 icon = document.querySelector(".main__icon");
                 body = document.querySelector("body");
-                sunsetDate = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
-                sunriseDate = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5);
+                sunsetDate = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString("en-UK").slice(0, 5);
+                console.log(sunsetDate);
+                sunriseDate = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString("en-UK").slice(0, 5);
                 date.textContent = "".concat(currentDayFull, " ").concat(currentDay, " ").concat(currentMonthFull);
                 location.textContent = "".concat(dataDaily.name, ", ").concat(dataHourly.city.country);
                 temp.textContent = "".concat(Math.round(dataDaily.main.temp), "\u00B0");
@@ -99,7 +100,7 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
                 sunset.textContent = sunsetDate;
                 humidity.textContent = "".concat(dataDaily.main.humidity, "%");
                 icon.innerHTML = "<img src=\"./images/icons/".concat(dataDaily.weather[0].main.toLowerCase(), ".png\" class=\"main__weather__image\">");
-                body.style.background = "url(\"./images/bg/".concat(dataDaily.weather[0].main.toLowerCase(), "_bg.jpg\") no-repeat center center / cover");
+                body.style.background = "url(\"./images/bg/".concat(dataDaily.weather[0].main.toLowerCase(), "_bg.webp\") no-repeat center center / cover");
                 cardsTime = document.querySelectorAll(".time");
                 cardTimeCalc = function () {
                     var i;
