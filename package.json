@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "node-geocoder": "^4.1.0"
   }
 }

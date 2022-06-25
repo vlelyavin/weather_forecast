@@ -87,7 +87,6 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
                 icon = document.querySelector(".main__icon");
                 body = document.querySelector("body");
                 sunsetDate = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString("en-UK").slice(0, 5);
-                console.log(sunsetDate);
                 sunriseDate = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString("en-UK").slice(0, 5);
                 date.textContent = "".concat(currentDayFull, " ").concat(currentDay, " ").concat(currentMonthFull);
                 location.textContent = "".concat(dataDaily.name, ", ").concat(dataHourly.city.country);
@@ -146,7 +145,7 @@ var findLocation = function () {
                     return [4 /*yield*/, geoApiResult.json()];
                 case 2:
                     geoApiResponse = _a.sent();
-                    weatherNow(geoApiResponse.locality);
+                    weatherNow(geoApiResponse.localityInfo.administrative[4].name);
                     return [2 /*return*/];
             }
         });

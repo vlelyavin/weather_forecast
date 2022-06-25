@@ -44,7 +44,6 @@ const weatherNow = async (city: any) => {
   const body: HTMLElement = document.querySelector("body");
 
   const sunsetDate: string = new Date(dataDaily.sys.sunset * 1000).toLocaleTimeString("en-UK").slice(0, 5);
-  console.log(sunsetDate);
   const sunriseDate: string = new Date(dataDaily.sys.sunrise * 1000).toLocaleTimeString("en-UK").slice(0, 5);
 
   date.textContent = `${currentDayFull} ${currentDay} ${currentMonthFull}`;
@@ -98,7 +97,7 @@ const findLocation = () => {
     const geoApiUrl: string = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
     const geoApiResult: Response = await fetch(geoApiUrl);
     const geoApiResponse: any = await geoApiResult.json();
-    weatherNow(geoApiResponse.locality);
+    weatherNow(geoApiResponse.localityInfo.administrative[4].name);
   };
   const error = () => {
     alert("unable to retrieve your position");
