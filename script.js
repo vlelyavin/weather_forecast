@@ -130,7 +130,8 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
         }
     });
 }); };
-var findLocation = function () {
+weatherNow("Kyiv");
+window.onload = function () {
     var success = function (position) { return __awaiter(_this, void 0, void 0, function () {
         var latitude, longitude, geoApiUrl, geoApiResult, geoApiResponse;
         return __generator(this, function (_a) {
@@ -156,7 +157,6 @@ var findLocation = function () {
     };
     navigator.geolocation.getCurrentPosition(success, error);
 };
-findLocation();
 var form = document.querySelector(".main__aside");
 var scrollRow = document.querySelector(".main__hourly__row");
 form.addEventListener("submit", function (e) {

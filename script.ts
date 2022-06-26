@@ -90,7 +90,9 @@ const weatherNow = async (city: any) => {
   cardTempCalc();
 };
 
-const findLocation = () => {
+weatherNow("Kyiv");
+
+window.onload = () => {
   const success = async (position: any) => {
     const latitude: number = position.coords.latitude;
     const longitude: number = position.coords.longitude;
@@ -105,8 +107,6 @@ const findLocation = () => {
   };
   navigator.geolocation.getCurrentPosition(success, error);
 };
-
-findLocation();
 
 const form: HTMLFormElement = document.querySelector(".main__aside");
 const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
