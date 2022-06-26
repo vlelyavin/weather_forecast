@@ -130,7 +130,6 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
         }
     });
 }); };
-weatherNow("Kyiv");
 window.onload = function () {
     var success = function (position) { return __awaiter(_this, void 0, void 0, function () {
         var latitude, longitude, geoApiUrl, geoApiResult, geoApiResponse;

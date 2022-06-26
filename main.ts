@@ -90,8 +90,6 @@ const weatherNow = async (city: any) => {
   cardTempCalc();
 };
 
-weatherNow("Kyiv");
-
 window.onload = () => {
   const success = async (position: any) => {
     const latitude: number = position.coords.latitude;
