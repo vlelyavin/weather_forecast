@@ -96,7 +96,6 @@ window.onload = () => {
     const longitude: number = position.coords.longitude;
     const apiKey: string =
       "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
-    // const geoApiUrl: string = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
     const geoApiUrl: string = `https://api.myptv.com/geocoding/v1/locations/by-position/${latitude}/${longitude}?language=en`;
     const geoApiResult: Response = await fetch(geoApiUrl, {
       method: "GET",
