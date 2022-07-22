@@ -132,20 +132,28 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
 }); };
 window.onload = function () {
     var success = function (position) { return __awaiter(_this, void 0, void 0, function () {
-        var latitude, longitude, geoApiUrl, geoApiResult, geoApiResponse;
+        var latitude, longitude, apiKey, geoApiUrl, geoApiResult, geoApiResponse;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     latitude = position.coords.latitude;
                     longitude = position.coords.longitude;
-                    geoApiUrl = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=".concat(latitude, "&longitude=").concat(longitude, "&localityLanguage=en");
-                    return [4 /*yield*/, fetch(geoApiUrl)];
+                    apiKey = "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
+                    geoApiUrl = "https://api.myptv.com/geocoding/v1/locations/by-position/".concat(latitude, "/").concat(longitude, "?language=en");
+                    return [4 /*yield*/, fetch(geoApiUrl, {
+                            method: "GET",
+                            headers: {
+                                apiKey: apiKey,
+                                "Content-Type": "application/json"
+                            }
+                        })];
                 case 1:
                     geoApiResult = _a.sent();
                     return [4 /*yield*/, geoApiResult.json()];
                 case 2:
                     geoApiResponse = _a.sent();
-                    weatherNow(geoApiResponse.localityInfo.administrative[4].name);
+                    console.log(geoApiResponse.locations[0].address.city);
+                    weatherNow(geoApiResponse.locations[0].address.city);
                     return [2 /*return*/];
             }
         });

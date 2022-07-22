@@ -94,10 +94,20 @@ window.onload = () => {
   const success = async (position: any) => {
     const latitude: number = position.coords.latitude;
     const longitude: number = position.coords.longitude;
-    const geoApiUrl: string = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
-    const geoApiResult: Response = await fetch(geoApiUrl);
+    const apiKey: string =
+      "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
+    // const geoApiUrl: string = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
+    const geoApiUrl: string = `https://api.myptv.com/geocoding/v1/locations/by-position/${latitude}/${longitude}?language=en`;
+    const geoApiResult: Response = await fetch(geoApiUrl, {
+      method: "GET",
+      headers: {
+        apiKey: apiKey,
+        "Content-Type": "application/json",
+      },
+    });
     const geoApiResponse: any = await geoApiResult.json();
-    weatherNow(geoApiResponse.localityInfo.administrative[4].name);
+    console.log(geoApiResponse.locations[0].address.city);
+    weatherNow(geoApiResponse.locations[0].address.city);
   };
   const error = () => {
     alert("unable to retrieve your position");
@@ -105,7 +115,6 @@ window.onload = () => {
   };
   navigator.geolocation.getCurrentPosition(success, error);
 };
-
 const form: HTMLFormElement = document.querySelector(".main__aside");
 const scrollRow: HTMLElement = document.querySelector(".main__hourly__row");
 
