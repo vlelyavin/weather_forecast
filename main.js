@@ -112,16 +112,14 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
                 cardTimeCalc();
                 cardsIcon = document.querySelectorAll(".icon");
                 cardIconCalc = function () {
-                    var i;
-                    for (i = 0; i < cardsIcon.length; i++) {
+                    for (var i = 0; i < cardsIcon.length; i++) {
                         cardsIcon[i].innerHTML = "<img src=\"./images/icons/".concat(dataHourly.list[i].weather[0].main.toLowerCase(), ".png\">");
                     }
                 };
                 cardIconCalc();
                 cardsTemp = document.querySelectorAll(".temp");
                 cardTempCalc = function () {
-                    var i;
-                    for (i = 0; i < cardsTemp.length; i++) {
+                    for (var i = 0; i < cardsTemp.length; i++) {
                         cardsTemp[i].textContent = "".concat(Math.round(dataHourly.list[i].main.temp), "\u00B0");
                     }
                 };
@@ -132,28 +130,28 @@ var weatherNow = function (city) { return __awaiter(_this, void 0, void 0, funct
 }); };
 window.onload = function () {
     var success = function (position) { return __awaiter(_this, void 0, void 0, function () {
-        var latitude, longitude, apiKey, geoApiUrl, geoApiResult, geoApiResponse;
+        var latitude, longitude, key, url, result, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     latitude = position.coords.latitude;
                     longitude = position.coords.longitude;
-                    apiKey = "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
-                    geoApiUrl = "https://api.myptv.com/geocoding/v1/locations/by-position/".concat(latitude, "/").concat(longitude, "?language=en");
-                    return [4 /*yield*/, fetch(geoApiUrl, {
+                    key = "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
+                    url = "https://api.myptv.com/geocoding/v1/locations/by-position/".concat(latitude, "/").concat(longitude, "?language=en");
+                    return [4 /*yield*/, fetch(url, {
                             method: "GET",
                             headers: {
-                                apiKey: apiKey,
+                                apiKey: key,
                                 "Content-Type": "application/json"
                             }
                         })];
                 case 1:
-                    geoApiResult = _a.sent();
-                    return [4 /*yield*/, geoApiResult.json()];
+                    result = _a.sent();
+                    return [4 /*yield*/, result.json()];
                 case 2:
-                    geoApiResponse = _a.sent();
-                    console.log(geoApiResponse.locations[0].address.city);
-                    weatherNow(geoApiResponse.locations[0].address.city);
+                    response = _a.sent();
+                    console.log(response.locations[0].address.city);
+                    weatherNow(response.locations[0].address.city);
                     return [2 /*return*/];
             }
         });

@@ -73,8 +73,7 @@ const weatherNow = async (city: any) => {
 
   const cardsIcon: NodeListOf<HTMLElement> = document.querySelectorAll(".icon");
   const cardIconCalc = () => {
-    let i: number;
-    for (i = 0; i < cardsIcon.length; i++) {
+    for (let i: number = 0; i < cardsIcon.length; i++) {
       cardsIcon[i].innerHTML = `<img src="./images/icons/${dataHourly.list[i].weather[0].main.toLowerCase()}.png">`;
     }
   };
@@ -82,8 +81,7 @@ const weatherNow = async (city: any) => {
 
   const cardsTemp: NodeListOf<HTMLElement> = document.querySelectorAll(".temp");
   const cardTempCalc = () => {
-    let i: number;
-    for (i = 0; i < cardsTemp.length; i++) {
+    for (let i: number = 0; i < cardsTemp.length; i++) {
       cardsTemp[i].textContent = `${Math.round(dataHourly.list[i].main.temp)}°`;
     }
   };
@@ -94,19 +92,18 @@ window.onload = () => {
   const success = async (position: any) => {
     const latitude: number = position.coords.latitude;
     const longitude: number = position.coords.longitude;
-    const apiKey: string =
-      "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
-    const geoApiUrl: string = `https://api.myptv.com/geocoding/v1/locations/by-position/${latitude}/${longitude}?language=en`;
-    const geoApiResult: Response = await fetch(geoApiUrl, {
+    const key: string = "ZDg0YjUyNGFjYjU0NGFiNzlkYWU2ODk3OGRlNjU3N2M6NTcwNjgyOTgtYWI4Ni00MTNjLTkxNmMtNGFlNWE0NTIyZGI1";
+    const url: string = `https://api.myptv.com/geocoding/v1/locations/by-position/${latitude}/${longitude}?language=en`;
+    const result: Response = await fetch(url, {
       method: "GET",
       headers: {
-        apiKey: apiKey,
+        apiKey: key,
         "Content-Type": "application/json",
       },
     });
-    const geoApiResponse: any = await geoApiResult.json();
-    console.log(geoApiResponse.locations[0].address.city);
-    weatherNow(geoApiResponse.locations[0].address.city);
+    const response: any = await result.json();
+    console.log(response.locations[0].address.city);
+    weatherNow(response.locations[0].address.city);
   };
   const error = () => {
     alert("unable to retrieve your position");
